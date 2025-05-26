@@ -1,0 +1,621 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    --banner-image: url('');
+  }
+  
+  html, body {
+    @apply h-full;
+  }
+  
+  body {
+    margin: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    @apply bg-gradient-to-br from-sun-50 via-earth-50 to-forest-50;
+    background-attachment: fixed;
+    position: relative;
+  }
+  
+  /* Add the S.U.N. Festival banner as a subtle body background */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: var(--banner-image);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.03;
+    z-index: -1;
+    animation: gentle-fade-in 2s ease-in-out;
+  }
+  
+  * {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* S.U.N. Festival inspired buttons */
+  .btn-primary {
+    @apply bg-sun-gradient hover:shadow-lg hover:shadow-sun-500/30 text-white font-semibold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105;
+    background-image: linear-gradient(135deg, #FCD34D 0%, #F59E0B 50%, #D97706 100%);
+    box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+  }
+  
+  .btn-secondary {
+    @apply bg-nature-gradient hover:shadow-lg hover:shadow-forest-500/30 text-white font-semibold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105;
+    background-image: linear-gradient(135deg, #65BD65 0%, #22C55E 50%, #16A34A 100%);
+    box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
+  }
+  
+  .btn-spirit {
+    @apply bg-spirit-gradient hover:shadow-lg hover:shadow-spirit-500/30 text-white font-semibold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105;
+    background-image: linear-gradient(135deg, #D1C2FF 0%, #B794F6 50%, #9F7AEA 100%);
+    box-shadow: 0 4px 15px rgba(183, 148, 246, 0.3);
+  }
+  
+  .btn-peace {
+    @apply bg-gradient-to-r from-peace-400 to-peace-500 hover:shadow-lg hover:shadow-peace-500/30 text-white font-semibold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105;
+    box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
+  }
+  
+  .input-field {
+    @apply w-full px-4 py-3 border-2 border-earth-200 rounded-xl focus:outline-none focus:ring-4 focus:ring-sun-200 focus:border-sun-500 transition-all duration-300 bg-white/80;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 10px rgba(139, 111, 71, 0.1);
+  }
+  
+  .input-field:focus {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(245, 158, 11, 0.15);
+  }
+  
+  .card {
+    @apply bg-white/90 rounded-2xl shadow-xl p-6 border border-earth-100 transition-all duration-300 hover:shadow-2xl hover:scale-[1.02];
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    box-shadow: 
+      0 4px 25px rgba(139, 111, 71, 0.1),
+      0 0 50px rgba(245, 158, 11, 0.05);
+  }
+  
+  .card-nature {
+    @apply bg-gradient-to-br from-forest-50/90 to-earth-50/90 rounded-2xl shadow-xl p-6 border border-forest-200;
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    box-shadow: 
+      0 4px 25px rgba(34, 197, 94, 0.1),
+      0 0 50px rgba(101, 189, 101, 0.05);
+  }
+  
+  .card-spirit {
+    @apply bg-gradient-to-br from-spirit-50/90 to-peace-50/90 rounded-2xl shadow-xl p-6 border border-spirit-200;
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    box-shadow: 
+      0 4px 25px rgba(183, 148, 246, 0.1),
+      0 0 50px rgba(209, 194, 255, 0.05);
+  }
+  
+  .festival-header {
+    @apply bg-harmony-gradient text-white p-8 text-center relative overflow-hidden;
+    background-image: 
+      linear-gradient(135deg, rgba(252, 211, 77, 0.95) 0%, rgba(101, 189, 101, 0.95) 25%, rgba(56, 189, 248, 0.95) 50%, rgba(183, 148, 246, 0.95) 75%, rgba(245, 158, 11, 0.95) 100%),
+      var(--banner-image);
+    background-size: cover, cover;
+    background-position: center, center;
+    background-blend-mode: overlay;
+    border-radius: 0 0 2rem 2rem;
+    box-shadow: 0 10px 40px rgba(245, 158, 11, 0.3);
+    animation: header-banner-fade-in 3s ease-in-out;
+  }
+  
+  .festival-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 40% 60%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+    animation: mystical-shimmer 6s ease-in-out infinite;
+  }
+  
+  .festival-header::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--banner-image);
+    background-size: cover;
+    background-position: center;
+    opacity: 0.08;
+    z-index: -1;
+    animation: banner-glow 4s ease-in-out infinite alternate;
+  }
+  
+  .sun-symbol {
+    @apply text-sun-500 animate-glow;
+    filter: drop-shadow(0 0 10px rgba(245, 158, 11, 0.5));
+  }
+  
+  .nature-accent {
+    @apply text-forest-500;
+    filter: drop-shadow(0 0 5px rgba(34, 197, 94, 0.3));
+  }
+  
+  .spirit-accent {
+    @apply text-spirit-500;
+    filter: drop-shadow(0 0 5px rgba(183, 148, 246, 0.3));
+  }
+  
+  .peace-accent {
+    @apply text-peace-500;
+    filter: drop-shadow(0 0 5px rgba(56, 189, 248, 0.3));
+  }
+}
+
+/* Enhanced spiritual/nature-inspired design elements */
+.cosmic-container {
+  background: 
+    radial-gradient(circle at 25% 25%, rgba(245, 158, 11, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(34, 197, 94, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(183, 148, 246, 0.05) 0%, transparent 70%);
+  position: relative;
+}
+
+.cosmic-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: var(--banner-image);
+  background-size: 200%;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.02;
+  border-radius: inherit;
+  z-index: -1;
+  animation: cosmic-drift 20s linear infinite;
+}
+
+.organic-border {
+  border-radius: 
+    25% 75% 60% 40% / 
+    40% 60% 40% 60%;
+}
+
+.floating-element {
+  @apply animate-float;
+}
+
+/* Banner-enhanced navigation */
+.navbar-with-banner {
+  background: 
+    linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.85) 100%),
+    var(--banner-image);
+  background-size: auto, cover;
+  background-position: center, center;
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+}
+
+/* Map styles with S.U.N. Festival aesthetic */
+.map-container {
+  position: relative;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  box-shadow: 
+    0 10px 40px rgba(139, 111, 71, 0.2),
+    0 0 50px rgba(245, 158, 11, 0.1);
+  border: 3px solid;
+  border-image: linear-gradient(135deg, #FCD34D, #22C55E, #38BDF8) 1;
+}
+
+.map-loading-overlay {
+  background: rgba(255, 255, 255, 0.95);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-radius: 1.5rem;
+}
+
+.map-info-window {
+  font-family: 'Inter', sans-serif;
+  max-width: 320px;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.map-info-window .sun-color {
+  color: #F59E0B;
+}
+
+.map-info-window .nature-color {
+  color: #22C55E;
+}
+
+.map-info-window .spirit-color {
+  color: #B794F6;
+}
+
+/* S.U.N. Festival themed toggles and controls */
+.view-toggle button {
+  @apply transition-all duration-300 transform;
+  border-radius: 1rem;
+}
+
+.view-toggle button:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(245, 158, 11, 0.3);
+}
+
+.view-toggle button.active {
+  @apply bg-sun-gradient text-white shadow-lg;
+  box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4);
+}
+
+/* Enhanced ride cards with nature-inspired design */
+.ride-card-cosmic {
+  background: 
+    linear-gradient(135deg, 
+      rgba(255, 255, 255, 0.9) 0%,
+      rgba(247, 243, 240, 0.9) 50%,
+      rgba(240, 249, 240, 0.9) 100%
+    ),
+    var(--banner-image);
+  background-size: auto, 300%;
+  background-position: center, center;
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  border: 2px solid;
+  border-image: linear-gradient(135deg, #FCD34D, #65BD65, #38BDF8) 1;
+  border-radius: 1.5rem;
+  box-shadow: 
+    0 8px 30px rgba(139, 111, 71, 0.15),
+    0 0 50px rgba(245, 158, 11, 0.05);
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.ride-card-cosmic::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--banner-image);
+  background-size: 150%;
+  background-position: center;
+  opacity: 0.02;
+  border-radius: inherit;
+  z-index: -1;
+}
+
+.ride-card-cosmic:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 
+    0 15px 50px rgba(139, 111, 71, 0.25),
+    0 0 80px rgba(245, 158, 11, 0.15);
+}
+
+.ride-card-cosmic:hover::before {
+  opacity: 0.04;
+  background-size: 140%;
+  animation: gentle-zoom 3s ease-in-out;
+}
+
+.ride-card-with-location {
+  border-left: 6px solid #22C55E;
+  box-shadow: 
+    0 4px 20px rgba(34, 197, 94, 0.2),
+    -4px 0 15px rgba(34, 197, 94, 0.1);
+}
+
+.ride-card-without-location {
+  border-left: 6px solid #D6C7B8;
+  box-shadow: 
+    0 4px 20px rgba(214, 199, 184, 0.2),
+    -4px 0 15px rgba(214, 199, 184, 0.1);
+}
+
+/* Spiritual location selection */
+.location-mode-selector {
+  background: linear-gradient(135deg, 
+    rgba(248, 249, 250, 0.8) 0%,
+    rgba(247, 243, 240, 0.8) 100%
+  );
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-radius: 1rem;
+  padding: 1rem;
+  border: 2px solid rgba(245, 158, 11, 0.2);
+  box-shadow: 0 4px 20px rgba(139, 111, 71, 0.1);
+}
+
+.location-mode-selector label {
+  cursor: pointer;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  transition: all 0.3s ease-in-out;
+  font-weight: 500;
+}
+
+.location-mode-selector label:hover {
+  background: linear-gradient(135deg, #FEF3C7, #FDE68A);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(245, 158, 11, 0.2);
+}
+
+.location-mode-selector input[type="radio"]:checked + span {
+  background: linear-gradient(135deg, #FCD34D, #F59E0B);
+  color: white;
+  border-radius: 0.75rem;
+  padding: 0.5rem 1rem;
+  margin-left: 0.5rem;
+  box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+  transform: scale(1.05);
+}
+
+/* Sacred geometry patterns */
+.sacred-pattern {
+  background-image: 
+    radial-gradient(circle at 50% 50%, rgba(245, 158, 11, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 0% 100%, rgba(34, 197, 94, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 100% 0%, rgba(183, 148, 246, 0.1) 0%, transparent 50%);
+}
+
+/* Google Maps customization for S.U.N. Festival */
+.gm-style-cc {
+  display: none !important;
+}
+
+.gm-bundled-control {
+  margin: 15px !important;
+  border-radius: 1rem !important;
+  overflow: hidden;
+}
+
+/* Festival themed markers with cosmic energy */
+.festival-marker {
+  animation: cosmic-pulse 3s infinite;
+  border-radius: 50%;
+  border: 3px solid #F59E0B;
+  background: radial-gradient(circle, #FCD34D, #F59E0B);
+  box-shadow: 
+    0 0 20px rgba(245, 158, 11, 0.5),
+    0 0 40px rgba(245, 158, 11, 0.3),
+    0 0 60px rgba(245, 158, 11, 0.1);
+}
+
+/* Enhanced autocomplete for spiritual search */
+.pac-container {
+  border-radius: 1rem;
+  border: none;
+  box-shadow: 
+    0 15px 40px rgba(0, 0, 0, 0.15),
+    0 0 50px rgba(245, 158, 11, 0.1);
+  font-family: 'Inter', sans-serif;
+  margin-top: 8px;
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.pac-item {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid rgba(139, 111, 71, 0.1);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pac-item:hover {
+  background: linear-gradient(135deg, rgba(252, 211, 77, 0.1), rgba(245, 158, 11, 0.1));
+  transform: translateX(5px);
+}
+
+.pac-item-selected {
+  background: linear-gradient(135deg, rgba(252, 211, 77, 0.2), rgba(245, 158, 11, 0.2));
+  box-shadow: inset 4px 0 0 #F59E0B;
+}
+
+/* Status badges with cosmic energy */
+.status-badge {
+  @apply px-3 py-1 rounded-full text-sm font-semibold transition-all duration-300;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.status-pending {
+  @apply bg-gradient-to-r from-earth-100 to-earth-200 text-earth-800;
+  box-shadow: 0 2px 10px rgba(139, 111, 71, 0.2);
+}
+
+.status-confirmed {
+  @apply bg-nature-gradient text-white;
+  box-shadow: 0 2px 10px rgba(34, 197, 94, 0.3);
+  animation: pulse-gentle 2s infinite;
+}
+
+.status-active {
+  @apply bg-sun-gradient text-white;
+  box-shadow: 0 2px 10px rgba(245, 158, 11, 0.3);
+  animation: glow 2s infinite alternate;
+}
+
+.status-spiritual {
+  @apply bg-spirit-gradient text-white;
+  box-shadow: 0 2px 10px rgba(183, 148, 246, 0.3);
+}
+
+.status-peaceful {
+  @apply bg-gradient-to-r from-peace-400 to-peace-500 text-white;
+  box-shadow: 0 2px 10px rgba(56, 189, 248, 0.3);
+}
+
+/* Sacred scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: linear-gradient(180deg, #F7F3F0, #F0F9F0);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #FCD34D, #F59E0B);
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(245, 158, 11, 0.3);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #F59E0B, #D97706);
+}
+
+/* Mystical animation keyframes */
+@keyframes gentle-fade-in {
+  0% {
+    opacity: 0;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 0.03;
+    transform: scale(1);
+  }
+}
+
+@keyframes header-banner-fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes mystical-shimmer {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes banner-glow {
+  0% {
+    opacity: 0.05;
+    filter: brightness(1) saturate(1);
+  }
+  100% {
+    opacity: 0.12;
+    filter: brightness(1.2) saturate(1.3);
+  }
+}
+
+@keyframes cosmic-drift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes gentle-zoom {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes cosmic-pulse {
+  0% {
+    box-shadow: 
+      0 0 20px rgba(245, 158, 11, 0.5),
+      0 0 40px rgba(245, 158, 11, 0.3),
+      0 0 60px rgba(245, 158, 11, 0.1);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 
+      0 0 30px rgba(245, 158, 11, 0.7),
+      0 0 60px rgba(245, 158, 11, 0.5),
+      0 0 90px rgba(245, 158, 11, 0.3);
+    transform: scale(1.1);
+  }
+  100% {
+    box-shadow: 
+      0 0 20px rgba(245, 158, 11, 0.5),
+      0 0 40px rgba(245, 158, 11, 0.3),
+      0 0 60px rgba(245, 158, 11, 0.1);
+    transform: scale(1);
+  }
+}
+
+/* Mobile responsiveness for cosmic design */
+@media (max-width: 768px) {
+  .map-container {
+    height: 350px !important;
+    border-radius: 1rem;
+  }
+  
+  .view-toggle {
+    width: 100%;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  
+  .location-mode-selector {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .festival-header {
+    padding: 2rem 1rem;
+    border-radius: 0 0 1.5rem 1.5rem;
+  }
+  
+  .cosmic-container::before {
+    background-size: 150%;
+  }
+  
+  .ride-card-cosmic::before {
+    background-size: 200%;
+  }
+} 
