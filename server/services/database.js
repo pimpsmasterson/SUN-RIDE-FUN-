@@ -118,11 +118,14 @@ class DatabaseService {
 
   async insertDefaultSettings() {
     const defaultSettings = [
+      // API Configuration
       {
         key: 'google_maps_api_key',
         value: '',
         description: 'Google Maps JavaScript API Key for location services'
       },
+      
+      // Festival Configuration
       {
         key: 'festival_name',
         value: 'Sun Festival 2025',
@@ -142,6 +145,130 @@ class DatabaseService {
         key: 'festival_dates',
         value: 'June 29 - July 6, 2025',
         description: 'Festival dates'
+      },
+      
+      // Security Configuration
+      {
+        key: 'jwt_secret',
+        value: this.generateSecureSecret(),
+        description: 'JWT Secret for authentication (auto-generated)'
+      },
+      {
+        key: 'session_timeout',
+        value: '24h',
+        description: 'User session timeout duration'
+      },
+      
+      // Application Configuration
+      {
+        key: 'app_name',
+        value: 'Sun Festival Carpool',
+        description: 'Application name displayed to users'
+      },
+      {
+        key: 'app_version',
+        value: '1.0.0',
+        description: 'Current application version'
+      },
+      {
+        key: 'app_description',
+        value: 'Community-driven carpooling web app for Sun Festival 2025',
+        description: 'Application description for SEO and branding'
+      },
+      
+      // Email Configuration (for future use)
+      {
+        key: 'smtp_host',
+        value: '',
+        description: 'SMTP server hostname for email notifications'
+      },
+      {
+        key: 'smtp_port',
+        value: '587',
+        description: 'SMTP server port'
+      },
+      {
+        key: 'smtp_user',
+        value: '',
+        description: 'SMTP username'
+      },
+      {
+        key: 'smtp_password',
+        value: '',
+        description: 'SMTP password'
+      },
+      {
+        key: 'admin_email',
+        value: 'admin@sunfestival.com',
+        description: 'Administrator email address'
+      },
+      
+      // Hosting Configuration
+      {
+        key: 'domain_name',
+        value: '',
+        description: 'Your website domain (e.g., sunfestival.com)'
+      },
+      {
+        key: 'cors_origins',
+        value: '*',
+        description: 'Allowed CORS origins (comma-separated)'
+      },
+      {
+        key: 'rate_limit_requests',
+        value: '100',
+        description: 'Rate limit: requests per window'
+      },
+      {
+        key: 'rate_limit_window',
+        value: '15',
+        description: 'Rate limit: window in minutes'
+      },
+      
+      // Feature Flags
+      {
+        key: 'enable_chat',
+        value: 'true',
+        description: 'Enable/disable chat functionality'
+      },
+      {
+        key: 'enable_location_sharing',
+        value: 'true',
+        description: 'Enable/disable location sharing in chat'
+      },
+      {
+        key: 'enable_registration',
+        value: 'true',
+        description: 'Enable/disable new user registration'
+      },
+      {
+        key: 'maintenance_mode',
+        value: 'false',
+        description: 'Enable maintenance mode (blocks non-admin access)'
+      },
+      
+      // Database Configuration
+      {
+        key: 'db_backup_enabled',
+        value: 'true',
+        description: 'Enable automatic database backups'
+      },
+      {
+        key: 'db_backup_interval',
+        value: '24',
+        description: 'Database backup interval in hours'
+      },
+      
+      // Analytics & Monitoring
+      {
+        key: 'google_analytics_id',
+        value: '',
+        description: 'Google Analytics tracking ID (optional)'
+      },
+      {
+        key: 'error_reporting_enabled',
+        value: 'true',
+        description: 'Enable error reporting and logging'
       }
     ];
 
@@ -151,6 +278,28 @@ class DatabaseService {
         [setting.key, setting.value, setting.description]
       );
     }
+  }
+
+  generateSecureSecret() {
+    const crypto = require('crypto');
+    return crypto.randomBytes(64).toString('hex');
+  }
+
+  // Helper method to get a setting value
+  async getSetting(key, defaultValue = null) {
+    const setting = await this.getQuery(
+      'SELECT setting_value FROM admin_settings WHERE setting_key = ?',
+      [key]
+    );
+    return setting ? setting.setting_value : defaultValue;
+  }
+
+  // Helper method to update a setting
+  async updateSetting(key, value) {
+    await this.runQuery(
+      'UPDATE admin_settings SET setting_value = ?, updated_at = CURRENT_TIMESTAMP WHERE setting_key = ?',
+      [value, key]
+    );
   }
 
   async insertDefaultLocations() {
@@ -232,6 +381,28 @@ class DatabaseService {
         resolve();
       });
     });
+  }
+
+  // Helper method to get a setting value
+  async getSetting(key, defaultValue = null) {
+    const setting = await this.getQuery(
+      'SELECT setting_value FROM admin_settings WHERE setting_key = ?',
+      [key]
+    );
+    return setting ? setting.setting_value : defaultValue;
+  }
+
+  // Helper method to update a setting
+  async updateSetting(key, value) {
+    await this.runQuery(
+      'UPDATE admin_settings SET setting_value = ?, updated_at = CURRENT_TIMESTAMP WHERE setting_key = ?',
+      [value, key]
+    );
+  }
+
+  generateSecureSecret() {
+    const crypto = require('crypto');
+    return crypto.randomBytes(64).toString('hex');
   }
 }
 

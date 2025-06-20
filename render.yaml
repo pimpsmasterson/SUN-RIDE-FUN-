@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: sun-festival-carpool
+    env: node
+    buildCommand: npm run install-all && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+    healthCheckPath: /api/health
+    disk:
+      name: festival-data
+      mountPath: /opt/render/project/src/server/database
+      sizeGB: 1
+    scaling:
+      minInstances: 1
+      maxInstances: 3
+    autoDeploy: true
+    branch: main 

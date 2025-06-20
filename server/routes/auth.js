@@ -7,6 +7,12 @@ const db = require('../services/database');
 // User registration
 router.post('/register', async (req, res) => {
   try {
+    // Check if registration is enabled
+    const registrationEnabled = await db.getSetting('enable_registration', 'true');
+    if (registrationEnabled !== 'true') {
+      return res.status(403).json({ error: 'Registration is currently disabled' });
+    }
+
     const { name, email, phone, password } = req.body;
 
     // Check if user already exists
@@ -28,11 +34,14 @@ router.post('/register', async (req, res) => {
       [name, email, phone, hashedPassword]
     );
 
-    // Generate JWT token
+    // Generate JWT token using database settings
+    const jwtSecret = await db.getSetting('jwt_secret', process.env.JWT_SECRET || 'festival-secret-key');
+    const sessionTimeout = await db.getSetting('session_timeout', '7d');
+    
     const token = jwt.sign(
       { userId: result.lastID },
-      process.env.JWT_SECRET || 'festival-secret-key',
-      { expiresIn: '7d' }
+      jwtSecret,
+      { expiresIn: sessionTimeout }
     );
 
     res.status(201).json({
@@ -66,11 +75,14 @@ router.post('/login', async (req, res) => {
       return res.status(400).json({ error: 'Invalid credentials' });
     }
 
-    // Generate JWT token
+    // Generate JWT token using database settings
+    const jwtSecret = await db.getSetting('jwt_secret', process.env.JWT_SECRET || 'festival-secret-key');
+    const sessionTimeout = await db.getSetting('session_timeout', '7d');
+    
     const token = jwt.sign(
       { userId: user.id, isAdmin: user.is_admin },
-      process.env.JWT_SECRET || 'festival-secret-key',
-      { expiresIn: '7d' }
+      jwtSecret,
+      { expiresIn: sessionTimeout }
     );
 
     res.json({
@@ -97,7 +109,8 @@ const verifyToken = async (req, res, next) => {
       return res.status(401).json({ error: 'Access denied. No token provided.' });
     }
 
-    const decoded = jwt.verify(token, process.env.JWT_SECRET || 'festival-secret-key');
+    const jwtSecret = await db.getSetting('jwt_secret', process.env.JWT_SECRET || 'festival-secret-key');
+    const decoded = jwt.verify(token, jwtSecret);
     const user = await db.getQuery('SELECT * FROM users WHERE id = ?', [decoded.userId]);
     
     if (!user) {

@@ -1,12 +1,32 @@
 /** @type {import('tailwindcss').Config} */
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 module.exports = {
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
+  darkMode: 'class', // or 'media' or 'class'
   theme: {
     extend: {
       colors: {
-        // S.U.N. Festival inspired earth tones
+        'festival': {
+          'purple': '#4A1D96',
+          'blue': '#1E40AF',
+          'gold': '#F59E0B',
+          'dark': '#111827',
+        },
+        gray: {
+          50: '#F8FAFC',
+          100: '#F1F5F9',
+          200: '#E2E8F0',
+          300: '#CBD5E1',
+          400: '#94A3B8',
+          500: '#64748B',
+          600: '#475569',
+          700: '#334155',
+          800: '#1E293B',
+          900: '#0F172A',
+        },
         'sun': {
           50: '#FFFBEB',
           100: '#FEF3C7',

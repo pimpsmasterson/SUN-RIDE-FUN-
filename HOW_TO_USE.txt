@@ -1,0 +1,102 @@
+========================================
+   S.U.N. FESTIVAL WEBSITE - USER GUIDE
+========================================
+
+🌞 WELCOME! This guide will help you run your S.U.N. Festival website locally on your computer.
+
+========================================
+📋 WHAT YOU NEED BEFORE STARTING
+========================================
+
+1. DOWNLOAD NODE.JS (One-time setup):
+   - Go to: https://nodejs.org
+   - Click the GREEN button that says "LTS" (recommended)
+   - Download and install it (just click "Next" through the installer)
+   - Restart your computer after installation
+
+2. INTERNET CONNECTION:
+   - You need internet connection ONLY for the first setup
+   - After that, the website works offline
+
+========================================
+🚀 HOW TO START THE WEBSITE
+========================================
+
+SUPER SIMPLE - JUST 2 STEPS:
+
+1. DOUBLE-CLICK the file called "EASY_SETUP.bat"
+   - A black window will appear
+   - Wait for it to finish (it will say "SETUP COMPLETE!")
+
+2. YOUR WEBSITE WILL OPEN AUTOMATICALLY
+   - It opens in your web browser
+   - The address will be: http://localhost:3000
+
+========================================
+💡 IMPORTANT THINGS TO KNOW
+========================================
+
+✅ KEEP THE BLACK WINDOW OPEN
+   - Don't close the black command window
+   - This keeps your website running
+   - Closing it will stop the website
+
+✅ WEBSITE ADDRESS
+   - Your website is at: http://localhost:3000
+   - Only works on YOUR computer
+   - Others can't see it from their computers
+
+✅ TO STOP THE WEBSITE
+   - Close the black command window, OR
+   - Press Ctrl+C in the black window
+
+✅ TO START AGAIN LATER
+   - Just double-click "EASY_SETUP.bat" again
+   - It will be much faster the second time
+
+========================================
+🔧 TROUBLESHOOTING
+========================================
+
+❌ "Node.js is not installed" error:
+   - Download Node.js from https://nodejs.org
+   - Install it and restart your computer
+   - Try again
+
+❌ Website doesn't open:
+   - Wait a bit longer (first time takes 2-3 minutes)
+   - Manually go to: http://localhost:3000
+   - Check if the black window shows any errors
+
+❌ "Port 3000 is already in use":
+   - Close any other black windows that might be running
+   - Restart your computer
+   - Try again
+
+❌ Nothing works:
+   - Make sure you have internet connection
+   - Try running as Administrator (right-click EASY_SETUP.bat → "Run as administrator")
+
+========================================
+📁 WHAT'S IN THIS FOLDER
+========================================
+
+- EASY_SETUP.bat = The magic button to start everything
+- HOW_TO_USE.txt = This guide you're reading
+- client/ = Website files
+- server/ = Backend files
+- Other files = Technical stuff (don't touch)
+
+========================================
+🎉 ENJOY YOUR S.U.N. FESTIVAL WEBSITE!
+========================================
+
+Your website includes:
+- Beautiful mystical forest design
+- Carpool connection system
+- Community chat features
+- Direct link to membership purchase
+
+For technical support, contact your website developer.
+
+Last updated: December 2024 

@@ -5,6 +5,9 @@ import axios from 'axios';
 import toast from 'react-hot-toast';
 import { useAuth } from '../App';
 
+// Configure axios defaults
+axios.defaults.baseURL = process.env.REACT_APP_API_URL || 'https://sunfest-carpool-api.onrender.com';
+
 function Register() {
   const [formData, setFormData] = useState({
     name: '',
@@ -46,6 +49,7 @@ function Register() {
       toast.success(`Welcome to Sun Festival, ${response.data.user.name}!`);
       navigate('/');
     } catch (error) {
+      console.error('Registration error:', error);
       toast.error(error.response?.data?.error || 'Registration failed');
     } finally {
       setLoading(false);
@@ -84,6 +88,7 @@ function Register() {
                 onChange={handleChange}
                 className="input-field"
                 placeholder="Your full name"
+                autoComplete="name"
               />
             </div>
 
@@ -100,6 +105,7 @@ function Register() {
                 onChange={handleChange}
                 className="input-field"
                 placeholder="your@email.com"
+                autoComplete="email"
               />
             </div>
 
@@ -116,6 +122,7 @@ function Register() {
                 onChange={handleChange}
                 className="input-field"
                 placeholder="+36-70-123-4567"
+                autoComplete="tel"
               />
             </div>
 
@@ -132,6 +139,7 @@ function Register() {
                 onChange={handleChange}
                 className="input-field"
                 placeholder="Enter password"
+                autoComplete="new-password"
               />
             </div>
 
@@ -148,6 +156,7 @@ function Register() {
                 onChange={handleChange}
                 className="input-field"
                 placeholder="Confirm password"
+                autoComplete="new-password"
               />
             </div>
 

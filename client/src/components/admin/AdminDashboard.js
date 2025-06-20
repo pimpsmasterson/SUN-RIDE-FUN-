@@ -130,13 +130,24 @@ function AdminDashboard() {
             </div>
             <div className="p-6 space-y-4">
               <Link
+                to="/admin/users"
+                className="flex items-center p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
+              >
+                <Users className="h-6 w-6 text-purple-600 mr-3" />
+                <div>
+                  <h3 className="font-medium text-gray-900">Manage Users</h3>
+                  <p className="text-sm text-gray-600">View and manage registered users and admin permissions</p>
+                </div>
+              </Link>
+              
+              <Link
                 to="/admin/settings"
                 className="flex items-center p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
               >
                 <Settings className="h-6 w-6 text-festival-orange mr-3" />
                 <div>
-                  <h3 className="font-medium text-gray-900">Google Maps API Settings</h3>
-                  <p className="text-sm text-gray-600">Configure API keys and festival details</p>
+                  <h3 className="font-medium text-gray-900">Application Settings</h3>
+                  <p className="text-sm text-gray-600">Configure API keys, security, and festival details</p>
                 </div>
               </Link>
               
@@ -147,7 +158,7 @@ function AdminDashboard() {
                 <MapPin className="h-6 w-6 text-festival-blue mr-3" />
                 <div>
                   <h3 className="font-medium text-gray-900">Manage Locations</h3>
-                  <p className="text-sm text-gray-600">Add or edit pickup locations</p>
+                  <p className="text-sm text-gray-600">Add or edit pickup locations for carpools</p>
                 </div>
               </Link>
             </div>

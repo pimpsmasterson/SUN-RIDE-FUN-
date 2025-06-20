@@ -2,22 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 @layer base {
   :root {
-    --banner-image: url('');
+    --banner-image: url('../src/sun-festival-banner.png');
+    --font-display: 'Solar United Natives', system-ui, -apple-system, sans-serif;
+    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
   }
   
-  html, body {
-    @apply h-full;
+  html {
+    @apply h-full scroll-smooth;
   }
   
   body {
+    @apply min-h-full bg-gray-50 text-gray-900 antialiased font-sans;
+    font-feature-settings: 'rlig' 1, 'calt' 1;
     margin: 0;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-      sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     @apply bg-gradient-to-br from-sun-50 via-earth-50 to-forest-50;

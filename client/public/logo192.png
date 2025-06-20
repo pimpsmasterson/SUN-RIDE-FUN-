@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sun Festival Carpool API</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: linear-gradient(135deg, #FEF3C7, #FDE68A);
+      color: #4B5563;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .container {
+      max-width: 800px;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      color: #F59E0B;
+      margin-bottom: 10px;
+    }
+    p {
+      margin: 8px 0;
+      line-height: 1.6;
+    }
+    .endpoint {
+      background: #F9FAFB;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      text-align: left;
+    }
+    .endpoint code {
+      background: #E5E7EB;
+      padding: 2px 5px;
+      border-radius: 3px;
+    }
+    .footer {
+      margin-top: 30px;
+      font-size: 0.9em;
+      color: #6B7280;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🌞 Sun Festival Carpool API</h1>
+    <p>Community-driven carpooling web app for the Sun Festival in Csobánkapuszta, Hungary</p>
+    
+    <h2>Available Endpoints</h2>
+    
+    <div class="endpoint">
+      <p><code>GET /api</code> - API information</p>
+    </div>
+    
+    <div class="endpoint">
+      <p><code>GET /api/health</code> - API health check</p>
+    </div>
+    
+    <div class="endpoint">
+      <p><code>POST /api/auth/login</code> - User login</p>
+    </div>
+    
+    <div class="endpoint">
+      <p><code>POST /api/auth/register</code> - User registration</p>
+    </div>
+    
+    <div class="endpoint">
+      <p><code>GET /api/rides</code> - Get available rides</p>
+    </div>
+    
+    <div class="footer">
+      <p>Sun Festival 2025 - June 29 to July 6</p>
+    </div>
+  </div>
+</body>
+</html> 

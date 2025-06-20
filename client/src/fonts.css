@@ -1,0 +1,14 @@
+@font-face {
+  font-family: 'Solar United Natives';
+  src: url('%PUBLIC_URL%/fonts/Solar.United.Natives_bold_teszt.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Apply the font to specific elements */
+.font-solar {
+  font-family: 'Solar United Natives', sans-serif;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}

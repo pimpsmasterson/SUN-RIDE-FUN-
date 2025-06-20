@@ -1,13 +1,51 @@
 {
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "https://sun-e6wp6hvng-pimpsmastersons-projects.vercel.app/api/:path*"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        { "key": "Access-Control-Allow-Credentials", "value": "true" },
+        { "key": "Access-Control-Allow-Origin", "value": "*" },
+        { "key": "Access-Control-Allow-Methods", "value": "GET,OPTIONS,PATCH,DELETE,POST,PUT" },
+        { "key": "Access-Control-Allow-Headers", "value": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, Authorization" }
+      ]
+    }
+  ],
+  "buildCommand": "CI=false npm run build",
+  "outputDirectory": "build",
+  "framework": "create-react-app",
   "routes": [
     {
-      "src": "/api/(.*)",
-      "dest": "https://sunfest-carpool-api.onrender.com/api/$1",
-      "methods": ["GET", "POST", "PUT", "DELETE"]
+      "src": "/static/(.*)",
+      "dest": "/static/$1"
+    },
+    {
+      "src": "/favicon.ico",
+      "dest": "/favicon.ico"
+    },
+    {
+      "src": "/manifest.json",
+      "dest": "/manifest.json"
+    },
+    {
+      "src": "/logo192.png",
+      "dest": "/logo192.png"
+    },
+    {
+      "src": "/logo512.png",
+      "dest": "/logo512.png"
     },
     {
       "src": "/(.*)",
       "dest": "/index.html"
     }
-  ]
+  ],
+  "env": {
+    "REACT_APP_API_URL": "https://sun-e6wp6hvng-pimpsmastersons-projects.vercel.app"
+  }
 }

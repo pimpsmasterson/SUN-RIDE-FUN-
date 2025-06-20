@@ -1,241 +1,191 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Car, Plus, Search, Users, MessageCircle, Sun, Leaf, Heart, Star } from 'lucide-react';
+import bannerImage from '../sun-festival-banner.png';
+
+// Font loading component
+const FontLoader = () => {
+  useEffect(() => {
+    const fontStyle = `
+      @font-face {
+        font-family: 'Solar United Natives';
+        src: url(${process.env.PUBLIC_URL}/fonts/Solar.United.Natives_bold_teszt.ttf) format('truetype');
+        font-weight: bold;
+        font-style: normal;
+        font-display: swap;
+      }
+    `;
+
+    const styleElement = document.createElement('style');
+    styleElement.textContent = fontStyle;
+    document.head.appendChild(styleElement);
+
+    return () => {
+      document.head.removeChild(styleElement);
+    };
+  }, []);
+
+  return null;
+};
 
 function Dashboard() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-sun-50 via-earth-50 to-forest-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* S.U.N. Festival Welcome Header */}
-        <div className="festival-header cosmic-container mb-8 relative overflow-hidden">
-          <div className="relative z-10">
-            <div className="flex items-center justify-center mb-4 space-x-4">
-              <Sun className="h-12 w-12 sun-symbol animate-glow" />
-              <div className="h-8 w-0.5 bg-white/30"></div>
-              <Leaf className="h-8 w-8 nature-accent" />
-              <div className="h-8 w-0.5 bg-white/30"></div>
-              <Heart className="h-8 w-8 spirit-accent" />
+      <FontLoader />
+      
+      {/* Hero Section */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0">
+          <div className="relative h-full w-full">
+            {/* Background Image with Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/50 to-black/70 z-0"></div>
+            <img 
+              src={bannerImage} 
+              alt="S.U.N. Festival Banner" 
+              className="absolute inset-0 w-full h-full object-cover object-center"
+              style={{ '--banner-image': `url(${bannerImage})` }}
+            />
+            
+            {/* Content Container */}
+            <div className="relative z-10 w-full px-4 sm:px-6 lg:px-8 py-16">
+              <div className="max-w-7xl mx-auto">
+                <div className="text-center space-y-8 max-w-4xl mx-auto">
+                  {/* CTA Buttons */}
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center mt-12">
+                    <a 
+                      href="https://cooltix.hu/event/66f323b00dd8d14ca3a779fd"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-12 py-5 bg-yellow-400/25 backdrop-blur-md text-white font-black rounded-full hover:bg-yellow-400/35 transition-all duration-500 transform hover:scale-105 shadow-2xl hover:shadow-3xl hover:shadow-yellow-500/30 flex items-center justify-center gap-3 group relative overflow-hidden border-2 border-yellow-400/50 hover:border-yellow-300/70 no-underline"
+                      style={{ 
+                        fontFamily: '"Solar United Natives", sans-serif',
+                        textShadow: '0 2px 8px rgba(0, 0, 0, 0.8), 0 4px 16px rgba(0, 0, 0, 0.6)',
+                        fontWeight: '900'
+                      }}
+                    >
+                      {/* Magical sparkle effect */}
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out"></div>
+                      
+                      <Sun className="w-8 h-8 text-white group-hover:rotate-180 transition-transform duration-500 drop-shadow-lg" />
+                      <span className="relative z-10 text-2xl font-black tracking-wide">S.U.N. Full Year Access</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-3 font-spirit">
-              ☀️ Welcome to S.U.N. Festival Carpool ☀️
-            </h1>
-            <p className="text-xl md:text-2xl opacity-95 mb-2 font-medium">
-              Solar United Natives • Community Gathering
-            </p>
-            <p className="text-lg opacity-90 mb-3">
-              June 30 - July 7, 2025 • Csobánkapuszta, Hungary
-            </p>
-            <div className="flex items-center justify-center space-x-6 text-base opacity-85">
-              <span className="flex items-center space-x-2">
-                <Leaf className="h-4 w-4" />
-                <span>Love</span>
-              </span>
-              <span className="flex items-center space-x-2">
-                <Sun className="h-4 w-4" />
-                <span>Life</span>
-              </span>
-              <span className="flex items-center space-x-2">
-                <Heart className="h-4 w-4" />
-                <span>Peace</span>
-              </span>
-            </div>
-          </div>
-          
-          {/* Sacred geometry background patterns */}
-          <div className="absolute inset-0 opacity-20">
-            <div className="absolute top-10 left-10 w-20 h-20 border border-white/30 rounded-full animate-pulse-gentle"></div>
-            <div className="absolute top-20 right-20 w-16 h-16 border border-white/30 rounded-full animate-pulse-gentle" style={{animationDelay: '1s'}}></div>
-            <div className="absolute bottom-10 left-1/3 w-12 h-12 border border-white/30 rounded-full animate-pulse-gentle" style={{animationDelay: '2s'}}></div>
-            <div className="absolute bottom-20 right-10 w-24 h-24 border border-white/30 rounded-full animate-pulse-gentle" style={{animationDelay: '0.5s'}}></div>
           </div>
         </div>
-
+      </section>
+      
+      {/* Main Content */}
+      <div className="container mx-auto px-4 py-16">
         {/* Spiritual Journey Actions */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-          <Link
-            to="/rides"
-            className="card cosmic-container hover:transform hover:scale-105 transition-all duration-300 group"
-          >
-            <div className="text-center">
-              <div className="bg-sun-gradient p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center group-hover:animate-float">
-                <Search className="h-8 w-8 text-white" />
-              </div>
-              <h3 className="text-xl font-semibold text-earth-800 mb-2">Find Your Journey</h3>
-              <p className="text-earth-600">
-                Connect with fellow souls traveling to our sacred gathering
-              </p>
+        <div className="relative py-20 bg-gradient-to-b from-gray-50 to-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <span className="inline-block text-festival-gold font-semibold text-lg mb-3">CONNECT</span>
+              <h2 className="text-4xl font-bold text-gray-900 mb-4">Your Journey Awaits</h2>
+              <div className="h-1.5 w-20 bg-festival-gold mx-auto rounded-full"></div>
             </div>
-          </Link>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              <Link
+                to="/rides"
+                className="group relative bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100 hover:-translate-y-2"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-yellow-50 to-yellow-100 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="relative p-8 text-center">
+                  <div className="inline-flex items-center justify-center w-20 h-20 mx-auto mb-6 rounded-2xl bg-yellow-100 text-yellow-600 group-hover:bg-yellow-500 group-hover:text-white transition-colors duration-300">
+                    <Search className="h-10 w-10" />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">Find Your Journey</h3>
+                  <p className="text-gray-600 mb-6">
+                    Connect with fellow souls traveling to our sacred gathering
+                  </p>
+                  <span className="inline-flex items-center text-festival-gold font-medium group-hover:text-yellow-700 transition-colors duration-300">
+                    Find Rides
+                    <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </span>
+                </div>
+                <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-yellow-400 to-yellow-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </Link>
 
-          <Link
-            to="/create-ride"
-            className="card-nature cosmic-container hover:transform hover:scale-105 transition-all duration-300 group"
-          >
-            <div className="text-center">
-              <div className="bg-nature-gradient p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center group-hover:animate-float">
-                <Plus className="h-8 w-8 text-white" />
-              </div>
-              <h3 className="text-xl font-semibold text-earth-800 mb-2">Share Your Path</h3>
-              <p className="text-earth-600">
-                Offer a ride and spread positive energy to the community
-              </p>
-            </div>
-          </Link>
+              <Link
+                to="/create-ride"
+                className="group relative bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100 hover:-translate-y-2"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-green-50 to-green-100 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="relative p-8 text-center">
+                  <div className="inline-flex items-center justify-center w-20 h-20 mx-auto mb-6 rounded-2xl bg-green-100 text-green-600 group-hover:bg-green-500 group-hover:text-white transition-colors duration-300">
+                    <Plus className="h-10 w-10" />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">Share Your Path</h3>
+                  <p className="text-gray-600 mb-6">
+                    Offer a ride and share the journey with kindred spirits
+                  </p>
+                  <span className="inline-flex items-center text-green-600 font-medium group-hover:text-green-700 transition-colors duration-300">
+                    Offer a Ride
+                    <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </span>
+                </div>
+                <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-green-400 to-green-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </Link>
 
-          <Link
-            to="/my-rides"
-            className="card-spirit cosmic-container hover:transform hover:scale-105 transition-all duration-300 group"
-          >
-            <div className="text-center">
-              <div className="bg-spirit-gradient p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center group-hover:animate-float">
-                <Car className="h-8 w-8 text-white" />
-              </div>
-              <h3 className="text-xl font-semibold text-earth-800 mb-2">My Sacred Rides</h3>
-              <p className="text-earth-600">
-                Manage your journey offerings and connections
-              </p>
-            </div>
-          </Link>
+              <Link
+                to="/my-rides"
+                className="group relative bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100 hover:-translate-y-2"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-purple-50 to-indigo-100 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="relative p-8 text-center">
+                  <div className="inline-flex items-center justify-center w-20 h-20 mx-auto mb-6 rounded-2xl bg-indigo-100 text-indigo-600 group-hover:bg-indigo-500 group-hover:text-white transition-colors duration-300">
+                    <Car className="h-10 w-10" />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">My Sacred Rides</h3>
+                  <p className="text-gray-600 mb-6">
+                    Manage your journey offerings and connections
+                  </p>
+                  <span className="inline-flex items-center text-indigo-600 font-medium group-hover:text-indigo-700 transition-colors duration-300">
+                    View My Rides
+                    <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </span>
+                </div>
+                <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-indigo-400 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </Link>
 
-          <Link
-            to="/chat"
-            className="card hover:transform hover:scale-105 transition-all duration-300 group bg-gradient-to-br from-peace-50/90 to-sun-50/90 backdrop-blur-md"
-          >
-            <div className="text-center">
-              <div className="bg-gradient-to-r from-peace-400 to-peace-500 p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center group-hover:animate-float">
-                <MessageCircle className="h-8 w-8 text-white" />
-              </div>
-              <h3 className="text-xl font-semibold text-earth-800 mb-2">Community Chat</h3>
-              <p className="text-earth-600">
-                Connect hearts and minds with your travel companions
-              </p>
+              <Link
+                to="/chat"
+                className="group relative bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100 hover:-translate-y-2"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-cyan-100 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="relative p-8 text-center">
+                  <div className="inline-flex items-center justify-center w-20 h-20 mx-auto mb-6 rounded-2xl bg-blue-100 text-blue-600 group-hover:bg-blue-500 group-hover:text-white transition-colors duration-300">
+                    <MessageCircle className="h-10 w-10" />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">Community Chat</h3>
+                  <p className="text-gray-600 mb-6">
+                    Connect hearts and minds with your travel companions
+                  </p>
+                  <span className="inline-flex items-center text-blue-600 font-medium group-hover:text-blue-700 transition-colors duration-300">
+                    Join the Conversation
+                    <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </span>
+                </div>
+                <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-400 to-cyan-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </Link>
             </div>
-          </Link>
         </div>
-
-        {/* Festival Spirit Information */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-          {/* About S.U.N. Festival */}
-          <div className="card cosmic-container sacred-pattern">
-            <div className="flex items-center mb-6">
-              <Sun className="h-8 w-8 sun-symbol mr-3" />
-              <h2 className="text-2xl font-bold text-earth-800 font-spirit">About S.U.N. Festival</h2>
-            </div>
-            <div className="space-y-4 text-earth-700">
-              <p className="leading-relaxed">
-                <strong className="text-sun-600">Solar United Natives</strong> is a sacred gathering where 
-                love, life, and peace converge in the heart of nature. Our community celebrates 
-                consciousness, healing, and the profound connection between all beings.
-              </p>
-              <p className="leading-relaxed">
-                Nestled in the magical landscape of <strong className="text-forest-600">Csobánkapuszta, Hungary</strong>, 
-                our festival grounds offer a sanctuary for spiritual growth, artistic expression, 
-                and environmental harmony.
-              </p>
-              <div className="flex items-center space-x-4 pt-4">
-                <span className="flex items-center space-x-2 text-sun-600">
-                  <Star className="h-4 w-4" />
-                  <span className="text-sm font-medium">Healing Sessions</span>
-                </span>
-                <span className="flex items-center space-x-2 text-forest-600">
-                  <Leaf className="h-4 w-4" />
-                  <span className="text-sm font-medium">Eco-Conscious</span>
-                </span>
-                <span className="flex items-center space-x-2 text-spirit-600">
-                  <Heart className="h-4 w-4" />
-                  <span className="text-sm font-medium">Community</span>
-                </span>
-              </div>
-            </div>
-          </div>
-
-          {/* Carpooling Spirit */}
-          <div className="card-nature cosmic-container">
-            <div className="flex items-center mb-6">
-              <Users className="h-8 w-8 nature-accent mr-3" />
-              <h2 className="text-2xl font-bold text-earth-800 font-spirit">Carpooling Community</h2>
-            </div>
-            <div className="space-y-4 text-earth-700">
-              <p className="leading-relaxed">
-                Join our sacred circle of travelers! Carpooling embodies our values of 
-                <strong className="text-forest-600"> environmental consciousness</strong>, 
-                <strong className="text-spirit-600"> community connection</strong>, and 
-                <strong className="text-peace-600"> shared abundance</strong>.
-              </p>
-              <div className="bg-gradient-to-r from-sun-50 to-forest-50 p-4 rounded-xl border-l-4 border-sun-400">
-                <p className="text-sm italic text-earth-600">
-                  "When we travel together, we reduce our footprint on Mother Earth 
-                  while deepening our bonds with fellow souls. Every shared journey 
-                  is a step toward global harmony." 
-                </p>
-              </div>
-              <div className="flex space-x-3">
-                <div className="text-center flex-1">
-                  <div className="text-2xl font-bold text-sun-600">🌍</div>
-                  <div className="text-xs text-earth-600">Eco-Friendly</div>
-                </div>
-                <div className="text-center flex-1">
-                  <div className="text-2xl font-bold text-forest-600">🤝</div>
-                  <div className="text-xs text-earth-600">Community</div>
-                </div>
-                <div className="text-center flex-1">
-                  <div className="text-2xl font-bold text-spirit-600">💫</div>
-                  <div className="text-xs text-earth-600">Sacred Bond</div>
-                </div>
-                <div className="text-center flex-1">
-                  <div className="text-2xl font-bold text-peace-600">☮️</div>
-                  <div className="text-xs text-earth-600">Peace</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Getting Started Journey */}
-        <div className="card-spirit cosmic-container">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold text-earth-800 mb-4 font-spirit">
-              🌟 Begin Your Sacred Journey 🌟
-            </h2>
-            <p className="text-lg text-earth-600 max-w-3xl mx-auto">
-              Whether you're seeking passage to our gathering or offering your vehicle as a vessel 
-              of connection, every step is part of the beautiful tapestry we weave together.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="text-center space-y-3">
-              <div className="bg-sun-gradient p-3 rounded-full w-12 h-12 mx-auto flex items-center justify-center">
-                <span className="text-white font-bold">1</span>
-              </div>
-              <h3 className="font-semibold text-earth-800">Connect & Discover</h3>
-              <p className="text-sm text-earth-600">
-                Browse available rides or create your own offering to the community
-              </p>
-            </div>
-            <div className="text-center space-y-3">
-              <div className="bg-nature-gradient p-3 rounded-full w-12 h-12 mx-auto flex items-center justify-center">
-                <span className="text-white font-bold">2</span>
-              </div>
-              <h3 className="font-semibold text-earth-800">Sacred Communication</h3>
-              <p className="text-sm text-earth-600">
-                Use our mindful chat system to coordinate and build beautiful connections
-              </p>
-            </div>
-            <div className="text-center space-y-3">
-              <div className="bg-spirit-gradient p-3 rounded-full w-12 h-12 mx-auto flex items-center justify-center">
-                <span className="text-white font-bold">3</span>
-              </div>
-              <h3 className="font-semibold text-earth-800">Journey Together</h3>
-              <p className="text-sm text-earth-600">
-                Share the path to our sacred gathering with kindred spirits
-              </p>
-            </div>
-          </div>
         </div>
       </div>
     </div>
   );
 }
 
-export default Dashboard; 
+export default Dashboard;

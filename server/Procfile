@@ -1,1 +1,8 @@
-web: node index.js
+cd "c:\Users\samsc\OneDrive\Desktop\New folder (32)"
+git add client/vercel.json
+git commit -m "Fix vercel.json"
+git pushweb: node index.js
+
+Name: REACT_APP_API_URL
+Value: https://sun-car-cd server
+npm startpool-api.onrender.com
