@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/static/css/main.a74faf36.css",
-    "main.js": "/static/js/main.9f33f4ac.js",
+    "main.css": "/static/css/main.6d539237.css",
+    "main.js": "/static/js/main.a5cc53ec.js",
     "static/media/sun-festival-banner.png": "/static/media/sun-festival-banner.b041d7d1b74df9d5897d.png",
     "index.html": "/index.html",
-    "main.a74faf36.css.map": "/static/css/main.a74faf36.css.map",
-    "main.9f33f4ac.js.map": "/static/js/main.9f33f4ac.js.map"
+    "main.6d539237.css.map": "/static/css/main.6d539237.css.map",
+    "main.a5cc53ec.js.map": "/static/js/main.a5cc53ec.js.map"
   },
   "entrypoints": [
-    "static/css/main.a74faf36.css",
-    "static/js/main.9f33f4ac.js"
+    "static/css/main.6d539237.css",
+    "static/js/main.a5cc53ec.js"
   ]
 }
