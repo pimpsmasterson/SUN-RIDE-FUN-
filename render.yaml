@@ -10,7 +10,7 @@ services:
       - key: PORT
         value: 10000
       - key: BUILD_TIMESTAMP
-        value: "2025-06-21-1015"
+        value: "2025-06-21-1030"
     healthCheckPath: /api/health
     disk:
       name: festival-data
