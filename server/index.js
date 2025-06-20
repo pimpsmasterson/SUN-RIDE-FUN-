@@ -378,13 +378,22 @@ async function checkChatAccess(userId, rideId) {
   }
 }
 
-// Serve static files in production
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../client/build')));
+// Serve static files (check if build directory exists)
+const buildPath = path.join(__dirname, '../client/build');
+const fs = require('fs');
+
+if (fs.existsSync(buildPath)) {
+  console.log('📁 Serving static files from:', buildPath);
+  app.use(express.static(buildPath));
   
+  // Catch-all handler: send back React's index.html file for any non-API routes
   app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
+    if (!req.path.startsWith('/api/')) {
+      res.sendFile(path.resolve(buildPath, 'index.html'));
+    }
   });
+} else {
+  console.log('⚠️  No build directory found. Make sure to run npm run build first.');
 }
 
 // Error handling middleware
