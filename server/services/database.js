@@ -2,7 +2,13 @@ const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
 const bcrypt = require('bcryptjs');
 
-const dbPath = path.join(__dirname, '../database/festival.db');
+// Use environment variable for database path in production, fallback to local path
+const dbPath = process.env.DATABASE_PATH || 
+               process.env.RAILWAY_VOLUME_MOUNT_PATH ? 
+               path.join(process.env.RAILWAY_VOLUME_MOUNT_PATH, 'festival.db') :
+               path.join(__dirname, '../database/festival.db');
+
+console.log('📁 Database path:', dbPath);
 
 class DatabaseService {
   constructor() {

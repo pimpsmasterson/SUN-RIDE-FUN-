@@ -67,7 +67,7 @@ const app = express();
 const isVercel = process.env.VERCEL === '1';
 const server = isVercel ? null : http.createServer(app);
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || process.env.RAILWAY_PORT || 5000;
 
 // Configure CORS immediately (before routes) - Fix for development
 app.use(cors({
@@ -399,12 +399,15 @@ app.use((err, req, res, next) => {
 // Initialize and start server
 initializeApp().then(() => {
   if (!isVercel && server) {
-    server.listen(PORT, () => {
+    server.listen(PORT, '0.0.0.0', () => {
       console.log(`🌞 Sun Festival Carpool Server running on port ${PORT}`);
       console.log(`🔧 Environment: ${process.env.NODE_ENV || 'development'}`);
       console.log(`🎯 App Name: ${settingsService.get('app_name', 'Sun Festival Carpool')}`);
     });
   }
+}).catch(error => {
+  console.error('❌ Failed to start server:', error);
+  process.exit(1);
 });
 
 // Export for serverless deployment
