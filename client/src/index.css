@@ -6,7 +6,7 @@
 
 @layer base {
   :root {
-    --banner-image: url('../src/sun-festival-banner.png');
+    --banner-image: url(''); /* Will be set dynamically by JavaScript */
     --font-display: 'Solar United Natives', system-ui, -apple-system, sans-serif;
     --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
   }
